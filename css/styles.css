@@ -1,0 +1,239 @@
+/* LinkedIn-adjacent caption font (Source Sans family, used in LinkedIn UI) — loaded here so HTML stays Geist-only. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500&display=swap");
+
+/* Swap assets/paper-texture.svg and assets/foreground-art.svg when you add final tiles / AI art (WebP PNG with transparency works for foreground). */
+
+:root {
+  --ink: #1c1916;
+  --ink-muted: color-mix(in srgb, var(--ink) 80%, white 20%);
+  --paper-base: #d2cdc2;
+  --link-hover: #7a2038;
+  --nav-border: rgb(28 25 22 / 0.05);
+  --nav-border-hover: rgb(28 25 22 / 0.8);
+  --nav-border-current: rgb(28 25 22 / 0.3);
+  --contact-icon-size: 2.75rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  background-color: var(--paper-base);
+  background-image: url("../assets/paper-texture.svg");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  line-height: 1.45;
+}
+
+/* Decorative ink wash + hills + bamboo; replace URL with foreground-art.webp when ready */
+.ink-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("../assets/foreground-art.svg");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: min(135vw, 920px) auto;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  mask-image: radial-gradient(
+    ellipse 100% 90% at 100% 100%,
+    rgb(0 0 0) 0%,
+    rgb(0 0 0 / 0.72) 42%,
+    rgb(0 0 0 / 0) 74%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 90% at 100% 100%,
+    rgb(0 0 0) 0%,
+    rgb(0 0 0 / 0.72) 42%,
+    rgb(0 0 0 / 0) 74%
+  );
+}
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1rem, 4vw, 1.75rem) clamp(1.25rem, 5vw, 2.5rem) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: clamp(0.9rem, 2.2vw, 0.98rem);
+  font-weight: 500;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.45em 1.25em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border: 1px solid var(--nav-border);
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.04);
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--ink);
+  border-color: var(--nav-border-hover);
+  background-color: rgb(255 255 255 / 0.1);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--link-hover);
+  outline-offset: 3px;
+}
+
+.nav-link--current {
+  color: var(--ink);
+  font-weight: 600;
+  border-color: var(--nav-border-current);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.site-main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 5rem);
+  min-height: calc(100vh - 5rem);
+  padding: clamp(2rem, 8vw, 4rem) clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.site-main--page {
+  align-items: flex-start;
+  padding-top: clamp(3rem, 12vw, 5rem);
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.0rem;
+  width: max-content;
+  max-width: min(100%, 26rem);
+  margin-inline: auto;
+  padding-left: 1.25rem;
+  box-sizing: border-box;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.contact-row__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--contact-icon-size);
+  height: var(--contact-icon-size);
+  color: inherit;
+}
+
+.contact-row__svg {
+  display: block;
+  width: 58%;
+  height: 58%;
+}
+
+.contact-row__icon--at {
+  font-family: "Geist", system-ui, sans-serif;
+  font-size: calc(var(--contact-icon-size) * 0.48);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.contact-row__text {
+  font-family: "Source Sans 3", "Geist", system-ui, sans-serif;
+  font-size: clamp(1.02rem, 3vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.contact-row:hover {
+  color: var(--link-hover);
+}
+
+.contact-row:focus-visible {
+  outline: 2px solid var(--link-hover);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.placeholder-text {
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 1.65rem);
+  letter-spacing: 0.08em;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .ink-layer {
+    background-size: min(92vw, 1150px) auto;
+    opacity: 0.92;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ink-layer {
+    background-size: min(78vw, 1400px) auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .ink-layer {
+    background-size: 165vw auto;
+    background-position: bottom 2% right 0;
+    opacity: 0.84;
+  }
+
+  .site-nav {
+    letter-spacing: 0.01em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  .contact-row {
+    transition: none;
+  }
+}
