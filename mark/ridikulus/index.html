@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Квест для Марка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/mark.css?v=2" />
+  </head>
+  <body>
+    <main class="quest">
+      <figure class="quest__figure">
+        <img class="quest__character" id="quest-character" alt="" />
+      </figure>
+      <p class="quest__text" id="quest-text"></p>
+      <figure class="quest__figure quest__hidden" id="quest-extra-wrap" hidden>
+        <img class="quest__extra" id="quest-extra" alt="" />
+      </figure>
+      <form class="quest__form" id="quest-form">
+        <input
+          class="quest__input"
+          id="quest-input"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Ответ"
+        />
+        <button class="quest__submit" type="submit" aria-label="Отправить">
+          <svg
+            class="quest__submit-icon"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="currentColor"
+              d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+            />
+          </svg>
+        </button>
+      </form>
+      <p class="quest__error quest__hidden" id="quest-error" role="alert" hidden></p>
+      <a class="quest__next quest__hidden" id="quest-next" href="#" hidden>Дальше →</a>
+      <figure class="quest__figure quest__hidden" id="quest-final-wrap" hidden>
+        <img class="quest__final" id="quest-final" alt="" />
+      </figure>
+    </main>
+    <script src="/js/mark-stages.js"></script>
+    <script src="/js/mark.js"></script>
+  </body>
+</html>

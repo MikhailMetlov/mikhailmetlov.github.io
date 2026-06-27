@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="5@A>=06  400×600">
+  <rect width="400" height="600" fill="#141820"/>
+  <rect x="24" y="24" width="352" height="552" fill="none" stroke="#c9a84c" stroke-width="2" stroke-dasharray="8 6" opacity="0.55"/>
+  <text x="200" y="300" fill="#c9a84c" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle" opacity="0.7">400 × 600</text>
+  <text x="200" y="330" fill="#e8e4dc" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" opacity="0.5">5@A>=06</text>
+</svg>

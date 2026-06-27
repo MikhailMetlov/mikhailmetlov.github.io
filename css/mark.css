@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Source+Sans+3:wght@400;500;600&display=swap");
+
+:root {
+  --quest-bg: #0c0e12;
+  --quest-bg-glow: #1a1520;
+  --quest-text: #e8e4dc;
+  --quest-text-muted: color-mix(in srgb, var(--quest-text) 72%, var(--quest-bg) 28%);
+  --quest-gold: #c9a84c;
+  --quest-gold-hover: #dfc06a;
+  --quest-border: rgb(201 168 76 / 0.28);
+  --quest-error-bg: rgb(120 40 40 / 0.35);
+  --quest-error-text: #f0b4b4;
+  --quest-input-bg: rgb(255 255 255 / 0.06);
+  --quest-placeholder: rgb(201 168 76 / 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--quest-text);
+  background-color: var(--quest-bg);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -20%, var(--quest-bg-glow) 0%, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgb(201 168 76 / 0.06) 0%, transparent 40%);
+}
+
+.quest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: min(100%, 600px);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 5vw, 2.5rem) clamp(1rem, 4vw, 1.5rem) 2.5rem;
+}
+
+.quest__figure {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  padding: 0;
+  border: 1px dashed var(--quest-border);
+  border-radius: 0.5rem;
+  background-color: rgb(255 255 255 / 0.03);
+  line-height: 0;
+}
+
+.quest__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+
+.quest__text {
+  margin: 0;
+  width: 100%;
+  font-size: clamp(1rem, 3.4vw, 1.125rem);
+  color: var(--quest-text);
+}
+
+.quest__form {
+  display: flex;
+  align-items: stretch;
+  gap: 0.625rem;
+  width: 100%;
+}
+
+.quest__input {
+  flex: 1;
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  color: var(--quest-text);
+  background-color: var(--quest-input-bg);
+  border: 1px solid var(--quest-border);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.quest__input::placeholder {
+  color: var(--quest-text-muted);
+}
+
+.quest__input:focus {
+  border-color: var(--quest-gold);
+  box-shadow: 0 0 0 3px rgb(201 168 76 / 0.18);
+}
+
+.quest__submit {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  min-height: 3rem;
+  padding: 0;
+  color: var(--quest-gold);
+  background-color: rgb(201 168 76 / 0.1);
+  border: 1px solid var(--quest-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.quest__submit:hover {
+  color: var(--quest-bg);
+  background-color: var(--quest-gold);
+  border-color: var(--quest-gold);
+}
+
+.quest__submit:focus-visible {
+  outline: 2px solid var(--quest-gold);
+  outline-offset: 2px;
+}
+
+.quest__submit-icon {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.quest__error {
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.98rem;
+  color: var(--quest-error-text);
+  background-color: var(--quest-error-bg);
+  border: 1px solid rgb(240 180 180 / 0.25);
+  border-radius: 0.5rem;
+  animation: quest-error-in 0.25s ease;
+}
+
+.quest__next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--quest-gold);
+  text-decoration: none;
+  border: 1px solid var(--quest-border);
+  border-radius: 9999px;
+  background-color: rgb(201 168 76 / 0.08);
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.quest__next:hover {
+  color: var(--quest-bg);
+  background-color: var(--quest-gold-hover);
+  border-color: var(--quest-gold-hover);
+}
+
+.quest__next:focus-visible {
+  outline: 2px solid var(--quest-gold);
+  outline-offset: 3px;
+}
+
+.quest__link {
+  color: var(--quest-gold);
+}
+
+.quest__link:hover {
+  color: var(--quest-gold-hover);
+}
+
+.quest__hidden,
+.quest__error.quest__hidden,
+.quest__next.quest__hidden,
+.quest__figure.quest__hidden,
+.quest__form.quest__hidden {
+  display: none !important;
+}
+
+@keyframes quest-error-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .quest {
+    gap: 1rem;
+  }
+
+  .quest__form {
+    gap: 0.5rem;
+  }
+
+  .quest__submit {
+    width: 2.75rem;
+    min-height: 2.75rem;
+  }
+
+  .quest__input {
+    min-height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quest__error {
+    animation: none;
+  }
+
+  .quest__input,
+  .quest__submit,
+  .quest__next {
+    transition: none;
+  }
+}
