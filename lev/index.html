@@ -155,7 +155,7 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
 .earth-horizon:after{content:"";position:absolute;inset:18% 0 0;background:repeating-linear-gradient(165deg,transparent 0 23px,rgba(63,177,218,.12) 24px 25px,transparent 26px 40px);border-radius:50%}
 .earth-tag{position:absolute;bottom:8px;right:10px;color:#65bce9;font-size:8px;letter-spacing:1px;z-index:5}
 .atmo-glow{position:absolute;left:-24%;right:-24%;bottom:7%;height:22%;border-top:1px solid rgba(98,207,255,.8);border-radius:50%;box-shadow:0 -10px 21px rgba(45,174,255,.18);opacity:.65}
-.capsule-flight{position:absolute;left:14%;top:16%;width:34px;height:43px;z-index:5;transform:rotate(33deg);transition:left 1.4s ease,top 1.4s ease,transform 1.4s ease;filter:drop-shadow(0 0 6px rgba(108,211,255,.36))}
+.capsule-flight{position:absolute;left:14%;top:16%;width:34px;height:43px;z-index:5;transform:rotate(33deg);transform-origin:50% 85%;transition:left 1.4s ease,top 1.4s ease,transform 1.4s ease;filter:drop-shadow(0 0 6px rgba(108,211,255,.36))}
 .capsule-flight svg{width:100%;height:100%;overflow:visible}
 .heat-plume{position:absolute;left:23%;top:74%;width:55%;height:48%;background:linear-gradient(180deg,#fff7ae 0%,#ff8e4a 35%,rgba(255,50,26,0) 100%);filter:blur(4px);border-radius:50%;transform:rotate(18deg);opacity:0}
 .service-module-sep{position:absolute;left:8%;top:10%;width:28px;height:36px;z-index:4;opacity:0;transform:rotate(28deg);pointer-events:none}
@@ -169,19 +169,20 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
 .landing-scene.phase-entry .service-module-sep{opacity:0}
 @keyframes entryFlight{0%{left:12%;top:12%;transform:rotate(30deg) scale(.86)}45%{left:42%;top:34%;transform:rotate(48deg) scale(1.06)}100%{left:66%;top:47%;transform:rotate(75deg) scale(1.14)}}
 @keyframes heatFlicker{to{transform:rotate(14deg) scaleX(.82);opacity:.6}}
-.parachute-system{position:absolute;left:63%;top:23%;width:52px;height:63px;z-index:4;opacity:0;transform:scale(.1);transform-origin:50% 100%}
-.parachute-canopy{height:25px;width:52px;border-radius:30px 30px 4px 4px;background:repeating-linear-gradient(90deg,#d8eaf4 0 8px,#e14d52 8px 16px);border:1px solid #f4fbff;clip-path:polygon(0 100%,4% 55%,16% 18%,32% 0,50% 0,68% 0,84% 18%,96% 55%,100% 100%)}
-.parachute-lines{width:100%;height:24px;display:flex;justify-content:space-around}
-.parachute-lines i{height:24px;width:1px;background:#cbdce8;transform:rotate(9deg);transform-origin:top}
+.parachute-system{position:absolute;left:50%;bottom:calc(100% - 3px);width:60px;height:60px;margin-left:-30px;z-index:4;opacity:0;transform:scale(.1);transform-origin:50% 100%;pointer-events:none}
+.parachute-system svg{width:100%;height:100%;display:block;overflow:visible}
 .landing-scene.phase-parachutes .capsule-flight{left:65%;top:51%;transform:rotate(0deg) scale(.95)}
 .landing-scene.phase-parachutes .heat-plume,.landing-scene.phase-parachutes .service-module-sep{opacity:0}
 .landing-scene.phase-parachutes .parachute-system,.landing-scene.phase-splashdown .parachute-system{opacity:1;transform:scale(1);transition:opacity .4s,transform .5s cubic-bezier(.15,1.8,.5,1)}
-.landing-scene.phase-splashdown .capsule-flight{left:65%;top:70%;transform:rotate(0deg) scale(.8)}
-.landing-scene.phase-splashdown .parachute-system{opacity:.15;transform:translateY(-16px) scale(.8)}
+.landing-scene.phase-splashdown .capsule-flight{left:65%;top:calc(87% - 34px);transform:rotate(0deg) scale(.8)}
+.landing-scene.phase-splashdown .parachute-system{opacity:.35;transform:scale(.85)}
 .landing-scene.phase-splashdown .service-module-sep{opacity:0}
-.splash-rings{position:absolute;left:61%;bottom:13%;width:80px;height:20px;border:1px solid #73d7ff;border-radius:50%;opacity:0;transform:scale(.15);z-index:4}
-.landing-scene.phase-splashdown .splash-rings{opacity:1;animation:splash .8s ease-out 2}
-@keyframes splash{0%{transform:scale(.15);opacity:1}100%{transform:scale(1.7);opacity:0}}
+.splash-rings{position:absolute;left:calc(65% - 23px);top:calc(87% - 9px);width:80px;height:18px;z-index:4;pointer-events:none}
+.splash-rings i{position:absolute;inset:0;border:1px solid #73d7ff;border-radius:50%;opacity:0;transform:scale(.1)}
+.landing-scene.phase-splashdown .splash-rings i{animation:splash 2.1s ease-out infinite}
+.landing-scene.phase-splashdown .splash-rings i:nth-child(2){animation-delay:.7s}
+.landing-scene.phase-splashdown .splash-rings i:nth-child(3){animation-delay:1.4s}
+@keyframes splash{0%{transform:scale(.1);opacity:1}100%{transform:scale(1.8);opacity:0}}
 .landing-label{position:absolute;left:9px;top:9px;z-index:7;display:flex;flex-direction:column;gap:4px;color:#96c9e6;font-size:8px;letter-spacing:.9px}
 .landing-label strong{font-size:10px;color:#d8f1ff}
 .landing-scene.phase-splashdown .landing-label strong{color:#67efba}
@@ -216,8 +217,12 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
 .action-btn.primary:hover{background:#8cf3c6;box-shadow:0 0 13px color-mix(in srgb,var(--green),transparent 60%)}
 .action-btn.secondary{border-color:var(--edge-bright);color:var(--muted);background:transparent}
 .input-feedback{font-size:9px;color:var(--red);min-width:104px;max-width:180px}
-.final-link{color:var(--cyan);font-size:9px;letter-spacing:.3px;text-decoration:none;border-bottom:1px solid var(--edge-bright);padding-bottom:2px;white-space:nowrap}
+.final-link{color:var(--cyan);font-size:13.5px;letter-spacing:.3px;text-decoration:none;border-bottom:1px solid var(--edge-bright);padding-bottom:2px;white-space:nowrap}
 .final-link:hover{color:var(--green);border-color:var(--green)}
+.final-task{border:2px solid var(--amber);padding:9px 12px;margin:16px 0 4px;background:color-mix(in srgb,var(--amber),transparent 86%);color:var(--text);max-width:1150px;box-shadow:0 0 16px color-mix(in srgb,var(--amber),transparent 65%);animation:finalTaskPulse 2.4s ease-in-out infinite}
+.final-task strong{color:var(--amber)}
+.final-task-label{font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--amber);margin-bottom:5px}
+@keyframes finalTaskPulse{50%{box-shadow:0 0 26px color-mix(in srgb,var(--amber),transparent 45%)}}
 .sound-note{font-size:8px;color:var(--muted);margin-left:auto;white-space:nowrap}
 @media (max-width:1100px){
  .app{grid-template-rows:57px minmax(300px,1fr) 300px;padding:7px;gap:7px}
@@ -250,7 +255,7 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
 <div class="app" id="app">
   <header class="topbar">
     <div class="brand-mark" aria-hidden="true"><span>07</span></div>
-    <div class="brand"><strong>EOS-07 <span style="color:var(--muted)">//</span> FLIGHT SYSTEMS</strong><small>CREW RETURN VEHICLE · MISSION CONTROL INTERFACE</small></div>
+    <div class="brand"><strong>EOS-07 <span style="color:var(--muted)">//</span> FLIGHT SYSTEMS</strong><small>CREW RETURN VEHICLE · MISSION CONTROL INTERFACE · v1.0.1</small></div>
     <div class="header-spacer"></div>
     <div class="header-metric"><span>MISSION ELAPSED</span><strong id="missionClock">T+ 00:18:42</strong></div>
     <div class="header-separator"></div>
@@ -445,14 +450,13 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
             <div class="starfield"></div><div class="atmo-glow"></div><div class="earth-horizon"></div>
             <div class="landing-label"><span id="landingStageText">RETURN SEQUENCE STANDBY</span><strong id="landingStageCode">WAITING FOR COMMAND</strong></div>
             <div class="service-module-sep" id="serviceModuleSep" aria-hidden="true"><svg viewBox="0 0 28 40"><rect x="4" y="2" width="20" height="28" rx="2" fill="#6a8a9c" stroke="#c5e4f4" stroke-width="1"/><path d="M8 8h12M8 14h12M8 20h12" stroke="#9fc4d8" stroke-width=".8"/><path d="M10 30h8l-2 6h-4z" fill="#5a7382" stroke="#c5e4f4" stroke-width=".8"/></svg></div>
-            <div class="capsule-flight"><div class="heat-plume"></div><svg viewBox="0 0 40 52" aria-label="Капсула Orion"><path d="M20 2Q29 7 31 20L36 36L29 44H11L4 36L9 20Q11 7 20 2Z" fill="#d9e8ee" stroke="#ffffff" stroke-width="1.2"/><path d="M9 20Q20 27 31 20M7 34Q20 40 33 34" fill="none" stroke="#6f9aad" stroke-width="1.2"/><path d="M12 44h16l-3 5H15Z" fill="#ffab61" stroke="#fff0cf" stroke-width=".8"/></svg></div>
-            <div class="parachute-system"><div class="parachute-canopy"></div><div class="parachute-lines"><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="splash-rings"></div><div class="earth-tag">EARTH // PACIFIC RECOVERY ZONE</div>
+            <div class="capsule-flight"><div class="heat-plume"></div><svg viewBox="0 0 40 52" aria-label="Капсула Orion"><path d="M20 2Q29 7 31 20L36 36L29 44H11L4 36L9 20Q11 7 20 2Z" fill="#d9e8ee" stroke="#ffffff" stroke-width="1.2"/><path d="M9 20Q20 27 31 20M7 34Q20 40 33 34" fill="none" stroke="#6f9aad" stroke-width="1.2"/><path d="M12 44h16l-3 5H15Z" fill="#ffab61" stroke="#fff0cf" stroke-width=".8"/></svg><div class="parachute-system" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 60L4 22M30 60L17 24M30 60L30 24M30 60L43 24M30 60L56 22" stroke="#cbdce8" stroke-width=".9" fill="none"/><path d="M3 22Q4 2 30 2Q56 2 57 22Q50 19 43 24Q37 20 30 24Q23 20 17 24Q10 19 3 22Z" fill="#d8eaf4" stroke="#f4fbff" stroke-width=".8"/><path d="M17 24Q16 6 30 2Q22 8 30 24M43 24Q44 6 30 2Q38 8 30 24" fill="#e14d52" stroke="#f4fbff" stroke-width=".5"/></svg></div></div>
+            <div class="splash-rings"><i></i><i></i><i></i></div><div class="earth-tag">EARTH // PACIFIC RECOVERY ZONE</div>
           </div>
           <div class="radar-foot"><span class="radar-live" id="landingLive">ENTRY SEQUENCE ARMED</span><span id="landingStageRight">STANDBY</span></div>
         </div>
         <div class="nav-view" id="completeView" hidden>
-          <div class="landing-scene phase-splashdown" id="completeScene"><div class="starfield"></div><div class="atmo-glow"></div><div class="earth-horizon"></div><div class="landing-label"><span>MISSION STATUS</span><strong>SAFE SPLASHDOWN CONFIRMED</strong></div><div class="capsule-flight" style="left:65%;top:70%;transform:rotate(0deg) scale(.8)"><svg viewBox="0 0 40 52"><path d="M20 2Q29 7 31 20L36 36L29 44H11L4 36L9 20Q11 7 20 2Z" fill="#d9e8ee" stroke="#ffffff" stroke-width="1.2"/><path d="M9 20Q20 27 31 20M7 34Q20 40 33 34" fill="none" stroke="#6f9aad" stroke-width="1.2"/></svg></div><div class="splash-rings" style="opacity:.7;transform:scale(1.1)"></div><div class="earth-tag">CREW MODULE // RECOVERED</div></div>
+          <div class="landing-scene phase-splashdown" id="completeScene"><div class="starfield"></div><div class="atmo-glow"></div><div class="earth-horizon"></div><div class="landing-label"><span>MISSION STATUS</span><strong>SAFE SPLASHDOWN CONFIRMED</strong></div><div class="capsule-flight"><svg viewBox="0 0 40 52"><path d="M20 2Q29 7 31 20L36 36L29 44H11L4 36L9 20Q11 7 20 2Z" fill="#d9e8ee" stroke="#ffffff" stroke-width="1.2"/><path d="M9 20Q20 27 31 20M7 34Q20 40 33 34" fill="none" stroke="#6f9aad" stroke-width="1.2"/></svg></div><div class="splash-rings"><i></i><i></i><i></i></div><div class="earth-tag">CREW MODULE // RECOVERED</div></div>
           <div class="radar-foot"><span class="radar-live">ALL SYSTEMS NOMINAL</span><span>MISSION COMPLETE</span></div>
         </div>
         <div class="telemetry" id="telemetry">
@@ -475,7 +479,6 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
       <button class="action-btn" id="verifyBtn" type="submit" hidden>VERIFY / INSTALL</button>
       <span class="input-feedback" id="inputFeedback" aria-live="polite"></span>
       <button class="action-btn primary" id="activateBtn" type="button" hidden>АКТИВИРОВАТЬ</button>
-      <a class="final-link" id="videoLink" href="https://www.youtube.com/watch?v=jrDv0OdMt5s" target="_blank" rel="noopener noreferrer" hidden>ВИДЕО NASA: LAUNCH → SPLASHDOWN ↗</a>
       <span class="sound-note" id="soundNote">AUDIO: OPTIONAL</span>
     </form>
   </section>
@@ -487,43 +490,43 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
   const $$ = (sel) => Array.from(document.querySelectorAll(sel));
   const modules = [
     {
-      id:'comms', number:'01', short:'COMMS', code:'COM-418',
+      id:'comms', number:'01', short:'COMMS', code:'КОМ-418',
       title:'Коммуникационный модуль связи с Центром управления полётами',
       issue:'Основной коммуникационный блок повреждён: Центр управления полётами не принимает телеметрию с корабля.',
       clue:'Резервный коммуникационный модуль спрятан за главным большим монитором жилого модуля.'
     },
     {
-      id:'nav', number:'02', short:'NAV', code:'NAV-527',
+      id:'nav', number:'02', short:'NAV', code:'НАВ-527',
       title:'Линза навигационной системы',
       issue:'Оптический канал навигации потерял точность. Система больше не может надёжно уточнять ориентацию корабля.',
       clue:'Найдите сменную линзу на монтажной полке под большим телескопом у перехода на нижний жилой модуль.'
     },
     {
-      id:'power', number:'03', short:'PWR', code:'PWR-306',
+      id:'power', number:'03', short:'PWR', code:'РЭМ-306',
       title:'Запасной блок электропитания',
       issue:'Резервный контур питания разомкнут. Запаса энергии недостаточно для последовательности возвращения.',
       clue:'Блок находится в хранилище с квадратными ячейками в спальном отсеке младшего экипажа. Вычислите координаты: ряд сверху вниз = (10 / 2 − 9 / 3); столбец слева направо = (9 × 9 − 8 × 10).'
     },
     {
-      id:'life', number:'04', short:'LIFE', code:'LIFE-842',
+      id:'life', number:'04', short:'LIFE', code:'ЖИЗ-842',
       title:'Воздушный фильтр системы жизнеобеспечения',
       issue:'Основной фильтр воздушного контура повреждён. Качество циркуляции воздуха ниже допустимого уровня.',
       clue:'Основной фильтр повреждён. Для аварийной замены извлеките резервный фильтр из робота-уборщика в жилом модуле. Выключите устройство, откройте верхнюю сервисную крышку и достаньте фильтр из контейнера. Инструменты не требуются.'
     },
     {
-      id:'air', number:'05', short:'AIR', code:'AIR-695',
+      id:'air', number:'05', short:'AIR', code:'ВОЗ-695',
       title:'Управляющий модуль системы подачи воздуха',
       issue:'Система подачи воздуха не принимает команды. Автоматическая регулировка потока недоступна.',
       clue:'Резервный пульт управления закреплён на стене в капитанском спальном отсеке.'
     },
     {
-      id:'voice', number:'06', short:'VOICE', code:'VOICE-173',
+      id:'voice', number:'06', short:'VOICE', code:'ГОЛОС-173',
       title:'Система голосового управления экипажем',
       issue:'Голосовой канал отключён. Некоторые команды экипажу приходится передавать вручную.',
       clue:'Резервная станция голосового управления находится в отсеке сортировки отходов жилого модуля.'
     },
     {
-      id:'vital', number:'07', short:'VITAL', code:'VITAL-254',
+      id:'vital', number:'07', short:'VITAL', code:'ЗДОР-254',
       title:'Система контроля жизненных показателей экипажа',
       issue:'Медицинский канал не получает контрольные значения. Перед возвращением необходимо восстановить проверку состояния экипажа.',
       clue:'Резервный диагностический прибор находится рядом с системой 3D-печати в техническом отсеке.'
@@ -540,7 +543,6 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
   const verifyBtn = $('#verifyBtn');
   const activateBtn = $('#activateBtn');
   const feedback = $('#inputFeedback');
-  const videoLink = $('#videoLink');
   const progressLamps = $$('#progressLamps i');
   const clockEl = $('#missionClock');
   let audioCtx = null;
@@ -572,13 +574,13 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
     input.hidden=true;verifyBtn.hidden=true;input.value='';feedback.textContent='';state.selected=null;
     $$('.ship-module').forEach(n=>n.classList.remove('selected'));
     activateBtn.hidden=!(allInstalled()&&!state.landing&&!state.landingComplete);
-    videoLink.hidden=!state.landingComplete;
+    
   }
   function setConsole(html, tag='BUFFER READY', showInput=false){
     state.bufferId++;output.innerHTML=html;output.scrollTop=0;$('#screenTag').textContent=tag;
     if(!showInput){hideInput();}
     else{
-      input.hidden=false;verifyBtn.hidden=false;activateBtn.hidden=true;videoLink.hidden=true;
+      input.hidden=false;verifyBtn.hidden=false;activateBtn.hidden=true;
       feedback.textContent='';setTimeout(()=>input.focus(),0);
     }
   }
@@ -622,14 +624,15 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
       $('#headerAlertText').textContent='SYSTEM FAULT';$('#headerAlertText').style.color='var(--red)';
     }
     activateBtn.hidden=!(allInstalled()&&!state.landing&&!state.landingComplete);
-    videoLink.hidden=!state.landingComplete;
+    
   }
   function allInstalled(){return state.installed.size===modules.length;}
   function verifyCode(event){
     event?.preventDefault();
     if(!state.selected)return;
     const mod=modules.find(m=>m.id===state.selected);if(!mod)return;
-    const answer=input.value.trim().toUpperCase().replace(/\s+/g,'');
+    const latinToCyrillic={A:'А',B:'В',C:'С',E:'Е',H:'Н',K:'К',M:'М',O:'О',P:'Р',T:'Т',X:'Х',Y:'У'};
+    const answer=input.value.trim().toUpperCase().replace(/\s+/g,'').replace(/[–—]/g,'-').replace(/[ABCEHKMOPTXY]/g,c=>latinToCyrillic[c]);
     if(answer!==mod.code){feedback.textContent='ИДЕНТИФИКАТОР НЕ ПРИНЯТ. ПРОВЕРЬТЕ МАРКИРОВКУ.';playTone(210,.11);input.select();return;}
     state.installed.add(mod.id);remember(`Модуль ${mod.short} (${mod.code}) установлен. Система восстановлена.`);
     updateModuleVisuals();const installedNode=moduleNodes.get(mod.id);installedNode?.classList.add('install-flash');setTimeout(()=>installedNode?.classList.remove('install-flash'),1000);hideInput();
@@ -705,7 +708,7 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
     $('#systemView').hidden=true;$('#approachView').hidden=true;$('#landingView').hidden=false;$('#completeView').hidden=true;$('#telemetry').hidden=true;
     $('#navHeading').textContent='RETURN SEQUENCE // ENTRY';$('#navModeTag').textContent='AUTOMATIC';$('#navigationBtn').disabled=true;$('#radarBtn').disabled=true;$('#selfTestBtn').disabled=true;
     $('#landingScene').className='landing-scene phase-separation';$('#landingStageText').textContent='SERVICE MODULE SEPARATION';$('#landingStageCode').textContent='SEQUENCE 01 / 04';$('#landingLive').textContent='SEQUENCE RUNNING';$('#landingStageRight').textContent='SEPARATION';
-    activateBtn.hidden=true;videoLink.hidden=true;hideInput();playTone(440,.1);
+    activateBtn.hidden=true;hideInput();playTone(440,.1);
     showLandingText('ОТДЕЛЕНИЕ СЕРВИСНОГО МОДУЛЯ','Сервисный модуль отделён. Капсула экипажа начинает автоматическую последовательность возвращения.','RETURN SEQUENCE ACTIVE');
     remember('Командир активировал автоматическую последовательность возвращения.');
     setTimeout(()=>{
@@ -724,8 +727,8 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
       state.landing=false;state.landingComplete=true;$('#landingView').hidden=true;$('#completeView').hidden=false;$('#navHeading').textContent='MISSION COMPLETE // RECOVERY';$('#navModeTag').textContent='SAFE';$('#landingStageRight').textContent='SAFE';
       $('#navigationBtn').disabled=true;$('#radarBtn').disabled=true;$('#selfTestBtn').disabled=true;$('#headerAlertText').textContent='MISSION COMPLETE';$('#headerAlertText').style.color='var(--green)';$('#headerLed').style.background='var(--green)';$('#headerLed').style.boxShadow='0 0 10px var(--green)';$('#headerLed').style.animation='none';$('#alarmTitle').textContent='CREW SAFE';$('#alarmTitle').style.color='var(--green)';$('#alarmCard').style.borderColor='var(--green)';$('#alarmCard').style.background='color-mix(in srgb,var(--green),transparent 94%)';$('#alarmSubtitle').textContent='Миссия успешно завершена';
       remember('Приводнение подтверждено. Капсула доставлена в зону восстановления. Экипаж в безопасности.');
-      setConsole(`<div class="console-subtitle">MISSION REPORT · ${missionStamp()}</div><div class="console-ok">МИССИЯ EOS-07 УСПЕШНО ЗАВЕРШЕНА</div><div class="console-title">КАПСУЛА ВЕРНУЛАСЬ НА ЗЕМЛЮ</div><p class="console-copy">Все семь бортовых систем восстановлены. Вход в атмосферу и приводнение прошли штатно. Экипаж в безопасности.</p><div class="console-clue"><div class="console-label">ПОСЛЕДНЯЯ ЗАДАЧА / CARGO SEARCH</div>Бортовой компьютер обнаружил неучтённый грузовой контейнер. Последние координаты: <strong>капитанский спальный отсек</strong>. Проверьте пространство под самой большой кроватью.</div><p class="console-copy" style="color:var(--muted);font-size:10px;margin-top:8px">Для просмотра реальных кадров возвращения Orion откройте видео NASA в отдельной вкладке.</p>`, 'MISSION COMPLETE');
-      videoLink.hidden=false;activateBtn.hidden=true;playTone(880,.16);
+      setConsole(`<div class="console-subtitle">MISSION REPORT · ${missionStamp()}</div><div class="console-ok">МИССИЯ EOS-07 УСПЕШНО ЗАВЕРШЕНА</div><div class="console-title">КАПСУЛА ВЕРНУЛАСЬ НА ЗЕМЛЮ</div><p class="console-copy">Все семь бортовых систем восстановлены. Вход в атмосферу и приводнение прошли штатно. Экипаж в безопасности.</p><p class="console-copy"><a class="final-link" href="https://www.youtube.com/watch?v=UziDHB5d4-4" target="_blank" rel="noopener noreferrer">▶ Просмотреть реальное видео приземления ↗</a></p><div class="final-task"><div class="final-task-label">ПОСЛЕДНЯЯ ЗАДАЧА / CARGO SEARCH</div>Бортовой компьютер обнаружил неучтённый грузовой контейнер. Последние координаты: <strong>капитанский спальный отсек</strong>. Проверьте пространство под самой большой кроватью.</div>`, 'MISSION COMPLETE');
+      activateBtn.hidden=true;playTone(880,.16);
     },11200);
   }
   function updateTelemetry(){
@@ -774,7 +777,16 @@ html[data-theme="day"] .ship-module .target-number{fill:var(--text)}
 
   remember('Обнаружено повреждение семи бортовых систем после прохождения облака космических обломков. Автоматическое возвращение заблокировано.');
   remember('Командиру выданы полномочия на аварийный ремонт систем EOS-07.');
-  showWelcome();updateModuleVisuals();
+  const installAllForTesting=new URLSearchParams(window.location.search).get('all')==='1';
+  if(installAllForTesting){
+    modules.forEach(mod=>state.installed.add(mod.id));
+    remember('ТЕСТОВЫЙ РЕЖИМ: все семь систем отмечены как восстановленные.');
+    updateModuleVisuals();
+    setConsole(`<div class="console-subtitle">TEST MODE · ${missionStamp()}</div><div class="console-title">ВСЕ СИСТЕМЫ ВОССТАНОВЛЕНЫ</div><p class="console-copy">Диагностика завершена. Все семь модулей работают нормально. Подготовка к входу в атмосферу подтверждена.</p><p class="console-copy">Для запуска автоматической последовательности возвращения подтвердите команду командира.</p>`, 'READY FOR RETURN');
+    activateBtn.hidden=false;
+  }else{
+    showWelcome();updateModuleVisuals();
+  }
   setInterval(updateTelemetry,1000);
 })();
 </script>
